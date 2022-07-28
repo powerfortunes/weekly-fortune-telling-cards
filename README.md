@@ -22,12 +22,14 @@ The Weekly Fortune Telling Cards GitHub code is free software: You can redistrib
 ADD THESE CARDS TO A WEB PAGE
 Embed the HTML code shown below into your webpage/template. The cards will appear where this HTML code is inserted.
  
+
 1. To display weekly predictions for all twelve zodiac signs, use:
 <!-- Start of Code for All 12 Zodiac Signs -->
 <!-- Place this in the <HEAD> of your webpage: -->
-<script type="text/javascript" src="https://www.powerfortunes.com/amp/js/frame_siz_cli.js"></script>
+<script type="text/javascript" src="https://www.powerfortunes.com/amp/js/daily-fortunetellingcards.js"></script>
 <!-- Place this in the <BODY> of your webpage: -->
-<div style="position:relative;width:100%;min-width:auto;padding-top:2%;overflow:hidden;"><iframe onload="resizeIframe()" src="https://www.powerfortunes.com/amp/weekly-fortunetelling-cards.php" style="border:none;position:relative; width:100%;height:100%;min-height:auto;" frameborder="0" scrolling="no" allow="encrypted-media" allowfullscreen crossorigin="anonymous"></iframe></div>
+<script>loadCards("weekly","");</script>
+<div id="fortunetellingcards" style="position:relative;width:auto;height:100%;padding-top:2%;overflow:hidden;clear:both;"></div>
 <!-- End of Code for All 12 Zodiac Signs -->
 
 2. To display weekly predictions for an individual zodiac signs, use:
@@ -35,9 +37,9 @@ Embed the HTML code shown below into your webpage/template. The cards will appea
 <!-- Place this in the <HEAD> of your webpage: -->
 <script type="text/javascript" src="https://www.powerfortunes.com/amp/js/frame_siz_cli.js"></script>
 <!-- Place this in the <BODY> of your webpage: -->
-<div style="position:relative;width:100%;min-width:auto;padding-top:2%;overflow:hidden;"><iframe onload="resizeIframe()" src="https://www.powerfortunes.com/amp/weekly-fortunetelling-cards.php?sun-sign=REPLACE WITH A ZODIAC SIGN" style="border:none;position:relative;width:100%;height:100%;min-height:auto;" frameborder="0" scrolling="no" allow="encrypted-media" allowfullscreen crossorigin="anonymous"></iframe></div>
+<script>loadCards("weekly","REPLACE WITH A ZODIAC SIGN");</script>
+<div id="fortunetellingcards" style="position:relative;width:auto;height:100%;padding-top:2%;overflow:hidden;clear:both;"></div>
 <!-- End of Code for Individual Zodiac Signs -->
-
 == Frequently Asked Questions ==
 
 If you don't see an answer to your question, please go to https://www.powerfortunes.com/fortunetellingcards.php or contact us through our Facebook page, https://www.facebook.com/astrologysign/ .

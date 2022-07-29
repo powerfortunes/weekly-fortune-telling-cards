@@ -7,7 +7,7 @@ Tags: powerfortunes, weekly horoscopes, fortune telling cards, fortune telling, 
 Stable tag: 1.1.0
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Requires PHP: 5.6
+Requires HTML: 4.0 or greater.
 
 Official Weekly Fortune Telling Cards GitHub code, supported by the PowerFortunes team. Fortune Telling Cards adds value and interesting content to your site, increasing user engagement and dwell time.
 
@@ -26,7 +26,13 @@ Embed the HTML code shown below into your webpage/template. The cards will appea
 1. To display weekly predictions for all twelve zodiac signs, use:
 <!-- Start of Code for All 12 Zodiac Signs -->
 <!-- Place this in the <HEAD> of your webpage: -->
+<<<<<<< .mine
+<script src="https://www.powerfortunes.com/amp/js/daily-fortunetellingcards.js"></script>
+||||||| .r3
+<script type="text/javascript" src="https://www.powerfortunes.com/amp/js/frame_siz_cli.js"></script>
+=======
 <script type="text/javascript" src="https://www.powerfortunes.com/amp/js/daily-fortunetellingcards.js"></script>
+>>>>>>> .r4
 <!-- Place this in the <BODY> of your webpage: -->
 <script>loadCards("weekly","");</script>
 <div id="fortunetellingcards" style="position:relative;width:auto;height:100%;padding-top:2%;overflow:hidden;clear:both;"></div>
@@ -35,7 +41,7 @@ Embed the HTML code shown below into your webpage/template. The cards will appea
 2. To display weekly predictions for an individual zodiac signs, use:
 <!-- Start of Code for Individual Zodiac Signs -->
 <!-- Place this in the <HEAD> of your webpage: -->
-<script type="text/javascript" src="https://www.powerfortunes.com/amp/js/frame_siz_cli.js"></script>
+<script src="https://www.powerfortunes.com/amp/js/daily-fortunetellingcards.js"></script>
 <!-- Place this in the <BODY> of your webpage: -->
 <script>loadCards("weekly","REPLACE WITH A ZODIAC SIGN");</script>
 <div id="fortunetellingcards" style="position:relative;width:auto;height:100%;padding-top:2%;overflow:hidden;clear:both;"></div>
@@ -60,7 +66,7 @@ The cards are updated every Monday at 09:00 IST, at PowerFortunes.com, Nahan, In
 They are derived from tarot cards. There are four suits, with eight cards in each suit, They originated in medieval Europe. These cards are most suitable for zodiac predictions because they don't require any interpretation. The meaning of each card and its meaning when grouped with other cards, is printed on the cardface. A user just has to read the card to understand what it means.
 
 6. Will there be any loss of traffic, pagerank to my site?
-This content does not result in a loss of traffic or pagerank, as this loads through a responsive iframe, hence there are no direct hyperlinks from your site to ours. There are two optional hyperlinks that are provided so that a user can find out more information about the cards that they are viewing. As these links open in new tabs, no users actually leave your site.
+This content does not result in a loss of traffic or pagerank, as this loads through asynchronous javascript. There are two hyperlinks that are provided so that a user can find out more information about the cards that they are viewing. As these links are 'No Follow' and open in new tabs, no users actually leave your site.
 
 == Examples ==
 See:

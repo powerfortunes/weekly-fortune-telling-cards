@@ -31,19 +31,8 @@ Embed the HTML code shown below into your webpage/template. The cards will appea
 ||||||| .r3
 <script type="text/javascript" src="https://www.powerfortunes.com/amp/js/frame_siz_cli.js"></script>
 =======
-<script type="text/javascript" src="https://www.powerfortunes.com/amp/js/daily-fortunetellingcards.js"></script>
->>>>>>> .r4
 <!-- Place this in the <BODY> of your webpage: -->
 <script>loadCards("weekly","");</script>
-<div id="fortunetellingcards" style="position:relative;width:auto;height:100%;padding-top:2%;overflow:hidden;clear:both;"></div>
-<!-- End of Code for All 12 Zodiac Signs -->
-
-2. To display weekly predictions for an individual zodiac signs, use:
-<!-- Start of Code for Individual Zodiac Signs -->
-<!-- Place this in the <HEAD> of your webpage: -->
-<script src="https://www.powerfortunes.com/amp/js/daily-fortunetellingcards.js"></script>
-<!-- Place this in the <BODY> of your webpage: -->
-<script>loadCards("weekly","REPLACE WITH A ZODIAC SIGN");</script>
 <div id="fortunetellingcards" style="position:relative;width:auto;height:100%;padding-top:2%;overflow:hidden;clear:both;"></div>
 <!-- End of Code for Individual Zodiac Signs -->
 == Frequently Asked Questions ==

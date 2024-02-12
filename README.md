@@ -21,20 +21,65 @@ The Weekly Fortune Telling Cards GitHub code is free software: You can redistrib
 == For Front End Display, Use These HTML Code ==
 ADD THESE CARDS TO A WEB PAGE
 Embed the HTML code shown below into your webpage/template. The cards will appear where this HTML code is inserted.
- 
 
 1. To display weekly predictions for all twelve zodiac signs, use:
-<!-- Start of Code for All 12 Zodiac Signs -->
-<!-- Place this in the <HEAD> of your webpage: -->
-<<<<<<< .mine
-<script src="https://www.powerfortunes.com/amp/js/daily-fortunetellingcards.js"></script>
-||||||| .r3
-<script type="text/javascript" src="https://www.powerfortunes.com/amp/js/frame_siz_cli.js"></script>
-=======
-<!-- Place this in the <BODY> of your webpage: -->
-<script>loadCards("weekly","");</script>
-<div id="fortunetellingcards" style="position:relative;width:auto;height:100%;padding-top:2%;overflow:hidden;clear:both;"></div>
-<!-- End of Code for Individual Zodiac Signs -->
+<!-- Place this in the <HEAD> of your webpage or in an external CSS file: -->
+<style>
+.powerfortunes_div {
+position:relative;
+width:auto;
+height:100%;
+padding-top:2%;
+overflow:hidden;
+clear:both;
+}
+</style>
+<!-- Place this in the <BODY> tag of your webpage: -->
+<div id="fortunetellingcards" class="powerfortunes_div"></div>
+<script>loadCards("weekly","","");</script>
+
+<!-- Place this before the closing </BODY> tag of your webpage or in an external JS file: -->
+<script>
+var typ = '';
+var sign = '';
+var req_from = '';
+
+async function loadCards(typ, sgn, req_from) {
+  if (typ === '') {
+    typ = 'daily';
+  }
+  
+var loc = 'https://planets.powerfortunes.com/xml/';
+  if (sgn !== '') {
+    sign = '?sun-sign=' + sgn;
+  }
+  
+  var allCreds = '';
+  if (req_from === '' || req_from !== 'deny') {
+    allCreds = '';
+  }
+else if (sign !== '') {
+allCreds = '&refr=deny';
+}
+else if (sign === '') {
+allCreds = '?refr=deny';
+}
+  
+var uri = loc + typ + '-fortunetelling-cards.php' + sign + allCreds;
+
+try {
+  const response = await fetch(uri);
+  const text = await response.text();
+  document.getElementById('fortunetellingcards').insertAdjacentHTML('beforeend', text);
+} catch (error) {
+console.error('Error loading cards:', error);
+	}
+}
+</script>
+2. To display weekly predictions for any one of the twelve zodiac signs, use:
+<script>loadCards("weekly","Sign","");</script>
+Replace "Sign" with the zodiac sign to be displayed, e.g. <script>loadCards("weekly","Aries","");</script>
+
 == Frequently Asked Questions ==
 
 If you don't see an answer to your question, please go to https://www.powerfortunes.com/fortunetellingcards.php or contact us through our Facebook page, https://www.facebook.com/astrologysign/ .

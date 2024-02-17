@@ -35,50 +35,46 @@ clear:both;
 }
 </style>
 <!-- Place this in the <BODY> tag of your webpage: -->
-<div id="fortunetellingcards" class="powerfortunes_div"></div>
-<script>loadCards("weekly","","");</script>
+<div class="fortunetellingcards" data-sign="></div>
+<script>loadCards("weekly","");</script>
 
-<!-- Place this before the closing </BODY> tag of your webpage or in an external JS file: -->
+<!-- Place this before the <head> of your webpage or in an external JS file: -->
 <script>
-var typ = '';
-var sign = '';
-var req_from = '';
-
-async function loadCards(typ, sgn, req_from) {
-  if (typ === '') {
-    typ = 'daily';
-  }
-  
-var loc = 'https://planets.powerfortunes.com/xml/';
-  if (sgn !== '') {
-    sign = '?sun-sign=' + sgn;
-  }
-  
-  var allCreds = '';
-  if (req_from === '' || req_from !== 'deny') {
-    allCreds = '';
-  }
-else if (sign !== '') {
-allCreds = '&refr=deny';
+async function loadCards(typ, req_from = ''){
+if (typ === '') {
+typ = 'daily';
 }
-else if (sign === '') {
+
+var loc = 'https://planets.powerfortunes.com/xml/';
+var elements = document.querySelectorAll('.fortunetellingcards');
+
+for (let el of elements) {
+let sgn = el.getAttribute('data-sign');
+let signParam = sgn ? '?sun-sign=' + sgn : '';
+var allCreds = '';
+if (req_from === '' || req_from !== 'deny') {
+allCreds = '';
+} else if (signParam !== '') {
+allCreds = '&refr=deny';
+} else {
 allCreds = '?refr=deny';
 }
-  
-var uri = loc + typ + '-fortunetelling-cards.php' + sign + allCreds;
+
+var uri = loc + typ + '-fortunetelling-cards.php' + signParam + allCreds;
 
 try {
-  const response = await fetch(uri);
-  const text = await response.text();
-  document.getElementById('fortunetellingcards').insertAdjacentHTML('beforeend', text);
+const response = await fetch(uri);
+const text = await response.text();
+el.insertAdjacentHTML('beforeend', text);
 } catch (error) {
-console.error('Error loading cards:', error);
-	}
+console.error('Error loading cards for sign ' + sgn + ':', error);
+}
+}
 }
 </script>
 2. To display weekly predictions for any one of the twelve zodiac signs, use:
-<script>loadCards("weekly","Sign","");</script>
-Replace "Sign" with the zodiac sign to be displayed, e.g. <script>loadCards("weekly","Aries","");</script>
+<script>loadCards("weekly","Sign");</script>
+Replace "Sign" with the zodiac sign to be displayed, e.g. <script>loadCards("weekly","Aries");</script>
 
 == Frequently Asked Questions ==
 

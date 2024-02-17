@@ -5,7 +5,7 @@
 <title>PowerFortunes.com Weekly Fortune Telling Cards</title>
 <meta name="description" content="Example page to display the PowerFortunes.com Weekly Fortune Telling Cards for all zodiac signs on a single webpage.">
 <style>
-.powerfortunes_div {
+.fortunetellingcards {
 position:relative;
 width:auto;
 height:100%;
@@ -14,49 +14,44 @@ overflow:hidden;
 clear:both;
 }
 </style>
+<!-- Place this in the <head> tag of your webpage or in an external JS file: -->
+<script>
+async function loadCards(typ, req_from = ''){
+if (typ === '') {
+typ = 'daily';
+}
+
+var loc = 'https://planets.powerfortunes.com/xml/';
+var elements = document.querySelectorAll('.fortunetellingcards');
+
+for (let el of elements) {
+let sgn = el.getAttribute('data-sign');
+let signParam = sgn ? '?sun-sign=' + sgn : '';
+var allCreds = '';
+if (req_from === '' || req_from !== 'deny') {
+allCreds = '';
+} else if (signParam !== '') {
+allCreds = '&refr=deny';
+} else {
+allCreds = '?refr=deny';
+}
+
+var uri = loc + typ + '-fortunetelling-cards.php' + signParam + allCreds;
+
+try {
+const response = await fetch(uri);
+const text = await response.text();
+el.insertAdjacentHTML('beforeend', text);
+} catch (error) {
+console.error('Error loading cards for sign ' + sgn + ':', error);
+}
+}
+}
+</script>
 </head>
 
 <body>
-<div id="fortunetellingcards" class="powerfortunes_div"></div>
-<script>loadCards("weekly","","");</script>
-
-<!-- Place this before the closing </BODY> tag of your webpage or in an external JS file: -->
-<script>
-var typ = '';
-var sign = '';
-var req_from = '';
-
-async function loadCards(typ, sgn, req_from) {
-  if (typ === '') {
-    typ = 'daily';
-  }
-  
-var loc = 'https://planets.powerfortunes.com/xml/';
-  if (sgn !== '') {
-    sign = '?sun-sign=' + sgn;
-  }
-  
-  var allCreds = '';
-  if (req_from === '' || req_from !== 'deny') {
-    allCreds = '';
-  }
-else if (sign !== '') {
-allCreds = '&refr=deny';
-}
-else if (sign === '') {
-allCreds = '?refr=deny';
-}
-  
-var uri = loc + typ + '-fortunetelling-cards.php' + sign + allCreds;
-
-try {
-  const response = await fetch(uri);
-  const text = await response.text();
-  document.getElementById('fortunetellingcards').insertAdjacentHTML('beforeend', text);
-} catch (error) {
-console.error('Error loading cards:', error);
-	}
-}
-</script>
+<div class="fortunetellingcards" data-sign=""></div>
+<script>loadCards("weekly","");</script>
 </body>
 </html>
